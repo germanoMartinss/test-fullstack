@@ -49,14 +49,12 @@ const ClientForm = ({ client }) => {
             clientSchema.parse(formData);
 
             if (client) {
-                // Atualizando o cliente existente via API
                 await axios.put(`/clients/${client.id}`, formData);
             } else {
-                // Criando um novo cliente via API
                 await axios.post('/clients', formData);
             }
 
-            navigate('/'); // Redireciona após sucesso
+            navigate('/');
         } catch (error) {
             if (error instanceof z.ZodError) {
                 const validationErrors = error.errors.reduce((acc, curr) => {
