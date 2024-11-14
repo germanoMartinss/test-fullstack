@@ -9,7 +9,6 @@ class ClientController {
     async createClient(req, res) {
         const { name, email, cpf, phone, status } = req.body;
         
-        // Validação simples
         if (!name || !email || !cpf || !phone || !status) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
